@@ -82,5 +82,11 @@ export default Ember.Component.extend({
     });
 
     gl.init();
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+
+    this.get('gl').destroy();
   }
 });
