@@ -1,6 +1,6 @@
 # ember-golden-layout
 
-This README outlines the details of collaborating on this Ember addon.
+This addon integrates Ember with [GoldenLayout](http://golden-layout.com).
 
 ## Installation
 
@@ -8,19 +8,49 @@ This README outlines the details of collaborating on this Ember addon.
 * `cd ember-golden-layout`
 * `npm install`
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+There is only one components: `golden-layout`.
 
-## Running Tests
+```hbs
+{{golden-layout
+  options=(hash
+    content=(array
+      type="row"
+      content=(array
+        (hash
+          type="row",
+          content=(array
+            (hash
+              type="component",
+              componentName="test-component",
+              componentState=(hash label="A")
+            )
+            (hash
+              type="column",
+              content:[
+                {
+                  type="component",
+                  componentName="test-component",
+                  componentState=(hash label="B")
+                },
+                {
+                  type="component",
+                  componentName="test-component",
+                  componentState=(hash label="C")
+                }
+              ]
+            )
+          )
+        )
+      )
+    )
+  )
+}}
+```
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+There is only one attribute: `options`. The attribute is the [options](http://golden-layout.com/docs/Config.html) hash passed into GoldenLayout.
 
-## Building
+For type component, this addon will lookup the component by name using `componentName`. `componentState` will be set on the component as `state` attribute.
 
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+To update the component state, it is recommended to bind a mutable `Ember.Object` as `componentState`.
