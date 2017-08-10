@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import layout from './template';
 
+/* global GoldenLayout Set */
+
 export default Ember.Component.extend({
   classNames: 'ember-golden-layout',
   layout,
@@ -46,7 +48,6 @@ export default Ember.Component.extend({
 
   contentComponentRenderables: Ember.computed('contentComponents', function() {
     let content = this.get('contentComponents');
-    let context = this;
 
     return content.reduce(function recur(accum, { type, content, componentName, componentState }) {
       if (type === 'component') {
