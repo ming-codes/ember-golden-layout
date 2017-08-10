@@ -1,0 +1,6 @@
+{{~#each contentComponentRenderables as |renderable|~}}
+  {{component renderable.componentName
+    id=renderable.componentState.guid
+    state=renderable.componentState.state
+  }}
+{{~/each~}}

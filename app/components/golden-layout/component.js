@@ -1,0 +1,1 @@
+export { default } from 'ember-golden-layout/components/golden-layout/component';
